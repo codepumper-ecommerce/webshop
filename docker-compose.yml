@@ -31,16 +31,16 @@ services:
   #   expose:
   #     - 6379
 
-  # admin:
-  #   build:
-  #     context: ./admin
-  #     dockerfile: Dockerfile
-  #   image: admin:test
-  #   depends_on:
-  #     - backend
-  #   container_name: medusa-admin
-  #   environment:
-  #     NODE_OPTIONS: --openssl-legacy-provider
+  admin:
+    build:
+      context: ./admin
+      dockerfile: Dockerfile
+    image: admin:test
+    depends_on:
+      - backend
+    container_name: medusa-admin
+    environment:
+      NODE_OPTIONS: --openssl-legacy-provider
 
   # storefront:
   #   build:

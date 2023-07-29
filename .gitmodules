@@ -1,3 +1,6 @@
 [submodule "backend"]
 	path = backend
 	url = https://github.com/medusajs/medusa-starter-default.git
+[submodule "admin"]
+	path = admin
+	url = https://github.com/medusajs/nextjs-starter-medusa.git

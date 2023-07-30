@@ -5,7 +5,7 @@ on:
     branches: [main]
 
 env:
-  REGISTRY: "registry.digitalocean.com/codepumper"
+  REGISTRY: "your-digitalocean-registry-container-url"
   IMAGE_NAME: "medusa"
 
 jobs:
@@ -17,12 +17,14 @@ jobs:
 
       - name: Build and push backend image
         run: |
-          docker build -t ${REGISTRY}/${IMAGE_NAME}-backend:${GITHUB_SHA} -f ./backend/Dockerfile ./backend
+          cd backend
+          docker build -t ${REGISTRY}/${IMAGE_NAME}-backend:${GITHUB_SHA} -f Dockerfile .
           docker push ${REGISTRY}/${IMAGE_NAME}-backend:${GITHUB_SHA}
 
       - name: Build and push admin image
         run: |
-          docker build -t ${REGISTRY}/${IMAGE_NAME}-admin:${GITHUB_SHA} -f ./admin/Dockerfile ./admin
+          cd admin
+          docker build -t ${REGISTRY}/${IMAGE_NAME}-admin:${GITHUB_SHA} -f Dockerfile .
           docker push ${REGISTRY}/${IMAGE_NAME}-admin:${GITHUB_SHA}
 
   deploy:

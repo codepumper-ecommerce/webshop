@@ -17,7 +17,6 @@ jobs:
 
       - name: Build and push backend image
         run: |
-          cd backend
           docker build -t ${REGISTRY}/${IMAGE_NAME}-backend:${GITHUB_SHA} -f ./backend/Dockerfile ./backend
           docker push ${REGISTRY}/${IMAGE_NAME}-backend:${GITHUB_SHA}
 
